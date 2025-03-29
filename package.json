@@ -1,0 +1,7 @@
+{
+    "name": "auth-monorepo",
+    "private": true,
+    "workspaces": [
+      "packages/*"
+    ]
+  }

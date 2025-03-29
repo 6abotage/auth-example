@@ -1,0 +1,23 @@
+{
+  "name": "hono-openauth",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start:auth": "bun run --hot auth/index.ts",
+    "start:app": "bun run --hot server.ts",
+    "start": "concurrently \"bun run start:auth\" \"bun run start:app\""
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@openauthjs/openauth": "^0.4.3",
+    "bun-types": "^1.2.7",
+    "hono": "^4.7.5",
+    "valibot": "^1.0.0"
+  }
+}
