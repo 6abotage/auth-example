@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres:17-alpine
+    ports:
+      - "5432:5432" # Map host port 5432 to container port 5432
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-drizzle_user}         # Use env var or default
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-drizzle_password} # Use env var or default
+      POSTGRES_DB: ${POSTGRES_DB:-auth_db}             # Use env var or default (changed name slightly)
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Persist data
+    networks:
+      - authnet
+
+volumes:
+  postgres_data:
+
+networks:
+  authnet:
+    driver: bridge

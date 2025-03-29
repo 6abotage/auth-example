@@ -1,0 +1,38 @@
+{
+  "name": "@auth-monorepo/database",
+  "version": "1.0.0",
+  "private": true, 
+  "type": "module",
+  "main": "./dist/index.js", 
+  "types": "./dist/index.d.ts", 
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js" 
+    },
+    "./schema": {
+      "types": "./dist/schema.d.ts",
+      "import": "./dist/schema.js" 
+    }
+  },
+  "scripts": {
+    "build": "tsc", 
+    "dev": "tsc -w", 
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "bun run src/migrate.ts", 
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.32.1",
+    "pg": "^8.12.0"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.11.10",
+    "drizzle-kit": "^0.24.1",
+    "typescript": "^5.5.4" 
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

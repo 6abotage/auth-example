@@ -1,7 +1,25 @@
 {
-    "name": "auth-monorepo",
-    "private": true,
-    "workspaces": [
-      "packages/*"
-    ]
+  "name": "auth-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "docker:up": "docker compose up -d db",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f db",
+    "db:generate": "cd packages/database && bun run db:generate",
+    "db:migrate": "cd packages/database && bun run db:migrate",
+    "db:studio": "cd packages/database && bun run db:studio",
+    "db:build": "cd packages/database && bun run build",
+    "auth:dev": "cd apps/auth-server && bun run dev",
+    "frontend:dev": "cd apps/frontend && bun run dev",
+    "frontend:build": "cd apps/frontend && bun run build",
+    "dev": "concurrently \"bun run docker:up\" \"bun run auth:dev\" \"bun run frontend:dev\"",
+    "build": "bun run db:build && bun run frontend:build"
+  },
+  "dependencies": {
+    "concurrently": "^9.1.2"
   }
+}
