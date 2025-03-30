@@ -5,7 +5,7 @@ import "./App.css";
 import { createClient, Challenge } from "@openauthjs/openauth/client"; // Import Challenge type if using PKCE
 
 // --- Configuration ---
-const AUTH_ISSUER_URL = "http://localhost:3001"; // Base URL of the issuer mounted path
+const AUTH_ISSUER_URL = "http://localhost:3000"; // Base URL of the issuer mounted path
 
 // Redirect URI: Where the user is sent back *TO* after authentication.
 // Must be consistent between authorize and exchange.
